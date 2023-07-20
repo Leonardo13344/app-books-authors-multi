@@ -10,9 +10,13 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.config.ConfigProvider;
+import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import java.net.URI;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Path("/books")
@@ -42,7 +46,8 @@ public class BookRest {
                     dto.setTitle(obj.getTitle());
                     dto.setAuthorId(obj.getAuthorIdd());
                     AuthorDto authorDto = clientAuthors.getById(dto.getAuthorId());
-                    dto.setAuthorName(authorDto.getFirstName());
+                    String aname = String.format("%s, %s", authorDto.getLastName(), authorDto.getFirstName());
+                    dto.setAuthorName(aname);
                     return dto;
                 })
                 .collect(Collectors.toList());
@@ -58,6 +63,18 @@ public class BookRest {
         if (book.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
+
+        //Proxy Manual
+//        var config = ConfigProvider.getConfig();
+//        String.format("http://%s:%s",
+//                config.getValue("app.authors.host", String.class),
+//                config.getValue("app.authors.port", String.class)
+//        );
+//        RestClientBuilder.newBuilder()
+//                .baseUri(URI.create("http://127.0.0.1:9090"))
+//                .connectTimeout(400, TimeUnit.MILLISECONDS)
+//                .build(AuthorRestClient.class);
+
         Book obj = book.get();
         BookDto dto = new BookDto();
 
