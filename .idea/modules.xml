@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/authors/app-books-multi.authors.main.iml" filepath="$PROJECT_DIR$/.idea/modules/authors/app-books-multi.authors.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/books/app-books-multi.books.main.iml" filepath="$PROJECT_DIR$/.idea/modules/books/app-books-multi.books.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/authors/com.distribuida.app-books-multi.authors.main.iml" filepath="$PROJECT_DIR$/.idea/modules/authors/com.distribuida.app-books-multi.authors.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/books/com.distribuida.app-books-multi.books.main.iml" filepath="$PROJECT_DIR$/.idea/modules/books/com.distribuida.app-books-multi.books.main.iml" />
     </modules>
   </component>
 </project>
