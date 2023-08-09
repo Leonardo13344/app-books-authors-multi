@@ -44,8 +44,8 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.smallrye.common/smallrye-common-classloader/2.1.0/82d35cf67ad912e4c2b9d46b207dc44cf6c4fb01/smallrye-common-classloader-2.1.0.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.4/b4e0e2d2e023aa317b7cfcfc916377ea348e07d1/asm-9.4.jar" />
         </processorPath>
-        <module name="com.distribuida.app-books-multi.books.main" />
-        <module name="com.distribuida.app-books-multi.authors.main" />
+        <module name="app-books-multi.authors.main" />
+        <module name="app-books-multi.books.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

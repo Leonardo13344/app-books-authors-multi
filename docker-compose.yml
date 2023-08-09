@@ -10,7 +10,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   app-authors-service:
-    image: docker.io/lrsuniga/app-authors:1.0.0
+    image: docker.io/lrsuniga/app-authors
     deploy:
       replicas: 4
     expose:
@@ -22,11 +22,11 @@ services:
 #    ports:
 #      - "9090:9090"
   app-books-service:
-    image: docker.io/lrsuniga/app-books:1.0.0
+    image: docker.io/lrsuniga/app-books
     deploy:
       replicas: 1
     environment:
-      APP_AUTHORS_HOST: http://proxy/app-authors
+      APP_AUTHORS_URL: http://proxy/app-authors
       #APP_AUTHORS_HOST: app-authors-service
       #APP_AUTHORS_PORT: 9090
     expose:
