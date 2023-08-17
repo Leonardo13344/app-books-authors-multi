@@ -11,6 +11,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.config.ConfigProvider;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -34,6 +37,13 @@ public class BookRest {
 
 
     @GET
+    @Operation(summary = "GET ALL", description = "Obtains all books")
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "200", description = "Books Returned"),
+                    @APIResponse(responseCode = "404", description = "Method GET all not found")
+            }
+    )
     public List<BookDto> findAll() {
         return rep.findAll().list()
                 .stream()
@@ -54,6 +64,13 @@ public class BookRest {
     }
 
     @GET
+    @Operation(summary = "GET", description = "Obtains a book by id")
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "200", description = "Book by id returned"),
+                    @APIResponse(responseCode = "404", description = "Method GET by id not found")
+            }
+    )
     @Path("/{id}")
     public Response getById(@PathParam("id") Long id) {
         var book = rep.findByIdOptional(id);
@@ -91,6 +108,13 @@ public class BookRest {
     }
 
     @POST
+    @Operation(summary = "POST", description = "Create a book")
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "200", description = "Book created"),
+                    @APIResponse(responseCode = "404", description = "Method POST not found or something else...")
+            }
+    )
     public Response create(Book p) {
         rep.persist(p);
 
@@ -98,6 +122,13 @@ public class BookRest {
     }
 
     @PUT
+    @Operation(summary = "PUT", description = "Update a book by id")
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "200", description = "Book updated"),
+                    @APIResponse(responseCode = "404", description = "Method PUT by id not found")
+            }
+    )
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, Book bookObj) {
         Book book = rep.findById(id);
@@ -112,6 +143,13 @@ public class BookRest {
     }
 
     @DELETE
+    @Operation(summary = "DELETE", description = "Delete a book by id")
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "200", description = "Book deleted"),
+                    @APIResponse(responseCode = "404", description = "Method DELETE by id not found or something else...")
+            }
+    )
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
         rep.deleteById(id);

@@ -31,6 +31,9 @@ dependencies {
     implementation("io.quarkus:quarkus-rest-client-reactive")
 
     implementation("io.quarkus:quarkus-smallrye-health")
+
+    implementation("io.quarkus:quarkus-smallrye-openapi")
+
 }
 
 tasks.test {
